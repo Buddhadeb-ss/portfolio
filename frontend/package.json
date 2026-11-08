@@ -65,6 +65,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "postbuild": "node -e \"const fs = require('fs'); if (fs.existsSync('build') && !fs.existsSync('dist')) fs.cpSync('build', 'dist', {recursive: true}); if (fs.existsSync('dist') && !fs.existsSync('build')) fs.cpSync('dist', 'build', {recursive: true});\"",
     "build:cra": "craco build",
     "test": "craco test",
     "dev": "vite",
