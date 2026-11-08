@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Terminal } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal, EASE } from "./Reveal";
 import { profile } from "../data/portfolio";
 
@@ -51,7 +51,7 @@ export default function Footer() {
           </div>
         </Reveal>
 
-        {/* Machine & Parser Diagnostics row */}
+        {/* Hardware Status footer row */}
         <div className="mt-14 pt-6 border-t border-border/40 flex flex-col gap-3 font-mono text-xs text-muted-foreground/80 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
             <span>© {new Date().getFullYear()} {profile.name}</span>
@@ -62,19 +62,8 @@ export default function Footer() {
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="/llms.txt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground transition-colors underline decoration-border underline-offset-4"
-              title="Machine-readable markdown summary for AI models and parsers"
-            >
-              <Terminal className="h-3 w-3" />
-              /llms.txt (AI & LLM Briefing)
-            </a>
-            <span className="hidden md:inline">·</span>
-            <span className="hidden md:inline">Bengaluru, India</span>
+          <div className="flex items-center gap-4 text-muted-foreground">
+            <span>Bengaluru, India — engineering by day, light by instinct</span>
           </div>
         </div>
       </div>

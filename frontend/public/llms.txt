@@ -89,3 +89,4 @@ Buddhadeb Banik is an Embedded Systems Engineer working across bare-metal firmwa
 
 ## Photography Discipline
 Parallel to embedded engineering, Buddhadeb is an active street and landscape photographer based in Bengaluru (27 curated portfolio frames on Instagram @arc.buddha). Core philosophy: *"Silicon in the day, light after dark — two disciplines, one pair of eyes."*
+

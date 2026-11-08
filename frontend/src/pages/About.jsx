@@ -1,5 +1,5 @@
 import { Reveal } from "../components/Reveal";
-import { Download, Terminal } from "lucide-react";
+import { Download } from "lucide-react";
 import Footer from "../components/Footer";
 import { PcbTraceLine, CircuitBadge } from "../components/hardware/PcbTraceBus";
 import StatusLed from "../components/hardware/StatusLed";
@@ -56,15 +56,6 @@ export default function About() {
                 >
                   <Download className="h-4 w-4" />
                   Download CV (PDF)
-                </a>
-                <a
-                  href="/llms.txt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-mono text-muted-foreground transition-colors hover:border-foreground/50 hover:text-foreground"
-                >
-                  <Terminal className="h-4 w-4" />
-                  View /llms.txt Briefing
                 </a>
               </div>
             </Reveal>

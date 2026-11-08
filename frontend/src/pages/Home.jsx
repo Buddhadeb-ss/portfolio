@@ -20,7 +20,7 @@ function Hero() {
   return (
     <section
       ref={ref}
-      className="relative flex min-h-[94svh] flex-col justify-center overflow-hidden pt-12 md:pt-16"
+      className="relative flex min-h-[96svh] flex-col justify-between overflow-hidden pt-12 md:pt-16 pb-8"
       data-testid="home-hero"
     >
       {/* Right Column: Hero Portrait + Interactive Virtual OLED Telemetry */}
@@ -53,7 +53,7 @@ function Hero() {
         </motion.div>
       </motion.div>
 
-      <motion.div style={{ y: yCopy, opacity }} className="mx-auto w-full max-w-6xl px-6 pt-24 md:px-10">
+      <motion.div style={{ y: yCopy, opacity }} className="mx-auto w-full max-w-6xl px-6 pt-16 md:pt-20 md:px-10 flex-1 flex flex-col justify-center">
         {/* Hardware Status & Silkscreen Header */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -131,7 +131,7 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 1 }}
-        className="absolute bottom-8 left-6 flex items-center gap-3 text-muted-foreground md:left-10"
+        className="mx-auto w-full max-w-6xl px-6 md:px-10 pt-10 pb-4 flex items-center gap-3 text-muted-foreground z-10"
       >
         <motion.span animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}>
           <ArrowDown className="h-3.5 w-3.5" />

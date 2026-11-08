@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-pattern-7" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#262933" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="#0b0c10" />
+  <rect width="800" height="500" fill="url(#grid-pattern-7)" />
+
+  <!-- Outer Blueprint Border -->
+  <rect x="24" y="24" width="752" height="452" fill="none" stroke="#232733" stroke-width="1.5" />
+  <rect x="32" y="32" width="736" height="436" fill="none" stroke="#181a24" stroke-width="1" stroke-dasharray="4 4" />
+
+  <!-- Corner Marks -->
+  <path d="M18 24 h12 M24 18 v12 M770 24 h12 M776 18 v12 M18 476 h12 M24 470 v12 M770 476 h12 M776 470 v12" stroke="#4a5061" stroke-width="1.5" />
+
+  <!-- Header Technical Silkscreen -->
+  <text x="44" y="52" font-family="'JetBrains Mono', monospace" font-size="11" fill="#717789" letter-spacing="2">MOD_07 // POSIX_SYSTEMS_PROGRAMMING</text>
+  <text x="756" y="52" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="11" fill="#717789" letter-spacing="1">STRICT_C99 // PURE_LIBC</text>
+
+  <!-- Footer Technical Silkscreen -->
+  <text x="44" y="456" font-family="'JetBrains Mono', monospace" font-size="10" fill="#525866" letter-spacing="1.5">PROCESS_ISOLATION // FORK_EXEC</text>
+  <text x="756" y="456" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#525866" letter-spacing="1.5">VALGRIND: 0_LEAKS // DUP2_FD</text>
+
+  <!-- Center Terminal Window & Unix Process Architecture Diagram -->
+  <g transform="translate(180, 95)">
+    <!-- Terminal Window Frame -->
+    <rect x="0" y="0" width="440" height="280" rx="6" fill="#10121a" stroke="#363d50" stroke-width="1.8" />
+    
+    <!-- Titlebar with Window Buttons -->
+    <rect x="0" y="0" width="440" height="28" rx="6" fill="#171a25" />
+    <circle cx="16" cy="14" r="4" fill="#3f4557" />
+    <circle cx="30" cy="14" r="4" fill="#3f4557" />
+    <circle cx="44" cy="14" r="4" fill="#3f4557" />
+    <text x="220" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#717789">buddha@posix-core: ~/src/shell</text>
+
+    <!-- Terminal Prompt & Command Execution -->
+    <g transform="translate(20, 52)" font-family="'JetBrains Mono', monospace" font-size="10">
+      <text x="0" y="0" fill="#717789">$ <tspan fill="#ffffff" font-weight="600">./bin/c_shell</tspan></text>
+      <text x="0" y="20" fill="#525866">[KERNEL] Initializing REPL... PID: 2048</text>
+      <text x="0" y="40" fill="#717789">&gt; <tspan fill="#ffffff">cat /proc/cpuinfo | grep 'model name' &gt; out.log</tspan></text>
+    </g>
+
+    <!-- Process Fork & File Descriptor Redirection Flow Schematic -->
+    <g transform="translate(30, 125)">
+      <!-- Parent Process Box -->
+      <rect x="0" y="0" width="160" height="65" rx="4" fill="#090b12" stroke="#2c3344" stroke-width="1.2" />
+      <text x="12" y="20" font-family="'JetBrains Mono', monospace" font-size="9" fill="#9da6b9" font-weight="600">PARENT [PID: 2048]</text>
+      <text x="12" y="38" font-family="'JetBrains Mono', monospace" font-size="8" fill="#525866">fork() -&gt; spawn child</text>
+      <text x="12" y="52" font-family="'JetBrains Mono', monospace" font-size="8" fill="#525866">waitpid() on SIGCHLD</text>
+
+      <!-- Fork Arrow Line -->
+      <path d="M160 32 H220" stroke="#8892a6" stroke-width="1.5" />
+      <polygon points="220,32 214,28 214,36" fill="#8892a6" />
+
+      <!-- Child Process Box -->
+      <g transform="translate(225, 0)">
+        <rect x="0" y="0" width="160" height="65" rx="4" fill="#090b12" stroke="#48536b" stroke-width="1.5" />
+        <text x="12" y="20" font-family="'JetBrains Mono', monospace" font-size="9" fill="#ffffff" font-weight="600">CHILD [PID: 4096]</text>
+        <text x="12" y="38" font-family="'JetBrains Mono', monospace" font-size="8" fill="#717789">dup2(fd, STDOUT_FILENO)</text>
+        <text x="12" y="52" font-family="'JetBrains Mono', monospace" font-size="8" fill="#a1a8b8">execvp("/bin/cat", argv)</text>
+      </g>
+
+      <!-- File Descriptor Table Mapping -->
+      <g transform="translate(0, 85)" font-family="'JetBrains Mono', monospace" font-size="8" fill="#717789">
+        <rect x="0" y="0" width="385" height="30" rx="3" fill="#0c0e16" stroke="#232734" stroke-width="1" />
+        <text x="15" y="19" fill="#8892a6">FD_0: STDIN</text>
+        <text x="115" y="19" fill="#ffffff">FD_1: STDOUT -&gt; [out.log]</text>
+        <text x="280" y="19" fill="#8892a6">FD_2: STDERR</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Left Side: POSIX Syscall Reference -->
+  <g transform="translate(60, 165)" font-family="'JetBrains Mono', monospace" font-size="8" fill="#717789">
+    <rect x="0" y="0" width="105" height="95" fill="#10121a" stroke="#252936" stroke-width="1.2" />
+    <text x="12" y="20" fill="#9da6b9" font-weight="600">POSIX SYSCALLS</text>
+    <line x1="12" y1="28" x2="93" y2="28" stroke="#252936" stroke-width="1" />
+    <text x="12" y="44" fill="#5e6475">fork() / execvp()</text>
+    <text x="12" y="60" fill="#5e6475">dup2() / pipe()</text>
+    <text x="12" y="76" fill="#5e6475">waitpid()</text>
+    <text x="12" y="90" fill="#a1a8b8">LEAKS: 0 BYTES</text>
+  </g>
+
+  <!-- Right Side: Builtin Commands -->
+  <g transform="translate(635, 175)" font-family="'JetBrains Mono', monospace" font-size="8" fill="#717789">
+    <rect x="0" y="0" width="105" height="85" fill="#10121a" stroke="#252936" stroke-width="1.2" />
+    <text x="12" y="20" fill="#9da6b9" font-weight="600">SHELL BUILTINS</text>
+    <line x1="12" y1="28" x2="93" y2="28" stroke="#252936" stroke-width="1" />
+    <text x="12" y="44" fill="#5e6475">cd · pwd · echo</text>
+    <text x="12" y="60" fill="#5e6475">type · exit</text>
+    <text x="12" y="76" fill="#a1a8b8">PATH LOOKUP</text>
+  </g>
+</svg>

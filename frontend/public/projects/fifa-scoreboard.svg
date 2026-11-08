@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-pattern-5" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#262933" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="#0b0c10" />
+  <rect width="800" height="500" fill="url(#grid-pattern-5)" />
+
+  <!-- Outer Blueprint Border -->
+  <rect x="24" y="24" width="752" height="452" fill="none" stroke="#232733" stroke-width="1.5" />
+  <rect x="32" y="32" width="736" height="436" fill="none" stroke="#181a24" stroke-width="1" stroke-dasharray="4 4" />
+
+  <!-- Corner Marks -->
+  <path d="M18 24 h12 M24 18 v12 M770 24 h12 M776 18 v12 M18 476 h12 M24 470 v12 M770 476 h12 M776 470 v12" stroke="#4a5061" stroke-width="1.5" />
+
+  <!-- Header Technical Silkscreen -->
+  <text x="44" y="52" font-family="'JetBrains Mono', monospace" font-size="11" fill="#717789" letter-spacing="2">MOD_05 // WORKSTATION_TELEMETRY</text>
+  <text x="756" y="52" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="11" fill="#717789" letter-spacing="1">ESP32 // REST_POLLER</text>
+
+  <!-- Footer Technical Silkscreen -->
+  <text x="44" y="456" font-family="'JetBrains Mono', monospace" font-size="10" fill="#525866" letter-spacing="1.5">BME280: ±0.5°C // ±3% RH</text>
+  <text x="756" y="456" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#525866" letter-spacing="1.5">BUFFER: &lt;1KB // ARDUINO_JSON</text>
+
+  <!-- Center Scoreboard & Environment Display Unit -->
+  <g transform="translate(180, 105)">
+    <!-- Stand Enclosure -->
+    <rect x="0" y="0" width="440" height="260" rx="8" fill="#11131c" stroke="#353c4e" stroke-width="2" />
+    <rect x="8" y="8" width="424" height="244" rx="4" fill="#080a11" stroke="#222634" stroke-width="1" />
+
+    <!-- Top Section: Live Match OLED Screen (128x64 broadcast layout) -->
+    <g transform="translate(25, 25)">
+      <rect x="0" y="0" width="390" height="130" rx="4" fill="#04060a" stroke="#2d3445" stroke-width="1.5" />
+      
+      <!-- Top Match League Header -->
+      <text x="20" y="24" font-family="'JetBrains Mono', monospace" font-size="10" fill="#717789">PREMIER LEAGUE // LIVE</text>
+      <text x="370" y="24" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff" font-weight="600">'78 MIN</text>
+      <line x1="20" y1="32" x2="370" y2="32" stroke="#1f2330" stroke-width="1" />
+
+      <!-- Teams and Big Digital Scoreline -->
+      <g transform="translate(20, 80)">
+        <text x="35" y="0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="28" fill="#ffffff" font-weight="700">ARS</text>
+        <text x="175" y="5" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="38" fill="#ffffff" font-weight="700">3 - 1</text>
+        <text x="315" y="0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="28" fill="#a1a8b8" font-weight="700">CHE</text>
+      </g>
+
+      <text x="195" y="115" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#525866">REST API: FOOTBALL-DATA.ORG [15S POLL]</text>
+    </g>
+
+    <!-- Bottom Section: BME280 Environmental Telemetry Sub-Window -->
+    <g transform="translate(25, 175)">
+      <rect x="0" y="0" width="390" height="60" rx="3" fill="#06080e" stroke="#222736" stroke-width="1" />
+
+      <g transform="translate(20, 24)" font-family="'JetBrains Mono', monospace">
+        <!-- Temperature -->
+        <text x="0" y="0" font-size="8" fill="#717789">WORKSTATION TEMP</text>
+        <text x="0" y="20" font-size="16" fill="#ffffff" font-weight="600">24.8 °C</text>
+
+        <!-- Humidity -->
+        <text x="140" y="0" font-size="8" fill="#717789">RELATIVE HUMIDITY</text>
+        <text x="140" y="20" font-size="16" fill="#ffffff" font-weight="600">48.2 %</text>
+
+        <!-- Barometric Pressure -->
+        <text x="270" y="0" font-size="8" fill="#717789">AIR PRESSURE</text>
+        <text x="270" y="20" font-size="16" fill="#ffffff" font-weight="600">1013 hPa</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Left Side: Wi-Fi REST Poller Specs -->
+  <g transform="translate(60, 175)" font-family="'JetBrains Mono', monospace" font-size="8" fill="#717789">
+    <!-- Wi-Fi Radiation Waves -->
+    <path d="M40 25 A 15 15 0 0 1 65 25" fill="none" stroke="#8892a6" stroke-width="1.5" />
+    <path d="M32 18 A 26 26 0 0 1 73 18" fill="none" stroke="#8892a6" stroke-width="1.5" />
+    <circle cx="52.5" cy="30" r="2.5" fill="#ffffff" />
+    <text x="52.5" y="46" text-anchor="middle" fill="#9da6b9">2.4GHz Wi-Fi</text>
+    <text x="52.5" y="60" text-anchor="middle" fill="#525866">WPA2 AUTH</text>
+  </g>
+
+  <!-- Right Side: I2C Bus Sharing Blueprint -->
+  <g transform="translate(640, 175)" font-family="'JetBrains Mono', monospace" font-size="8" fill="#717789">
+    <rect x="0" y="0" width="105" height="85" fill="#10121a" stroke="#252936" stroke-width="1.2" />
+    <text x="12" y="20" fill="#9da6b9" font-weight="600">SHARED I2C BUS</text>
+    <line x1="12" y1="28" x2="93" y2="28" stroke="#252936" stroke-width="1" />
+    <text x="12" y="44" fill="#5e6475">OLED: 0x3C</text>
+    <text x="12" y="60" fill="#5e6475">BME280: 0x76</text>
+    <text x="12" y="76" fill="#a1a8b8">SPEED: 400kHz</text>
+  </g>
+</svg>

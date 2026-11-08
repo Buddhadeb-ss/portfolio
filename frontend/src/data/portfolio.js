@@ -82,7 +82,7 @@ export const projects = [
     description:
       "On-device edge computer vision running a custom 14.8 KB INT8 quantized neural core (DeskObjectNet) in 141ms on a 240MHz Xtensa LX6. Features binary framed JPEG streaming, predictive color-spatial tracking, zero memory leaks, and absolute zero background false positives.",
     stack: ["C++", "TensorFlow Lite Micro", "ESP32", "OV3660", "Edge AI", "Python"],
-    image: "https://raw.githubusercontent.com/Buddhadeb-ss/TinyCV-ESP32-CAM/main/screenshots/demo_mouse_tracking.png",
+    image: "/projects/tinycv-esp32-cam.svg",
     demoGif: "https://raw.githubusercontent.com/Buddhadeb-ss/TinyCV-ESP32-CAM/main/screenshots/live_dashboard_demo.gif",
     demoVideo: "https://raw.githubusercontent.com/Buddhadeb-ss/TinyCV-ESP32-CAM/main/Video_recording/test.mp4",
     url: "https://github.com/Buddhadeb-ss/TinyCV-ESP32-CAM",
@@ -148,7 +148,7 @@ export const projects = [
     description:
       "Integrated counter-UAS defense architecture featuring low-latency radar target tracking, a 100 Hz closed-loop PID dual-axis motorized gimbal, bare-metal STM32 microcontroller firmware, and a real-time tactical 3D command dashboard.",
     stack: ["Embedded C", "STM32", "PID Control", "Python", "Radar / CV", "HIL Simulation"],
-    image: "https://images.unsplash.com/photo-1562408590-e32931084e23?crop=entropy&cs=srgb&fm=jpg&q=85",
+    image: "/projects/anti-drone.svg",
     url: "https://github.com/Buddhadeb-ss/SIH-26-Anti-Drone-System",
     featured: true,
     metrics: [
@@ -210,7 +210,7 @@ export const projects = [
     description:
       "A complete custom PCB designed in KiCad for an open-hardware handheld gaming and development console. Features an Arduino Nano ESP32, high-contrast 0.96\" I2C OLED display, and a 5-button tactile GPIO matrix with optimized ground planes and noise decoupling.",
     stack: ["KiCad EDA", "PCB Layout", "Nano ESP32", "Gerber CAM", "Hardware Design"],
-    image: "https://images.unsplash.com/photo-1555589228-135c25ae8cf5?crop=entropy&cs=srgb&fm=jpg&q=85",
+    image: "/projects/game-dev-board.svg",
     url: "https://github.com/Buddhadeb-ss/Game-Development-board",
     featured: true,
     metrics: [
@@ -264,7 +264,7 @@ export const projects = [
     description:
       "IoT-enabled precision DC power instrumentation device architected for solar panels, lithium battery cells, and workstation loads. Measures voltage, current, instantaneous wattage, and accumulated watt-hours in real time with high-side I2C shunt sampling and Wi-Fi telemetry.",
     stack: ["C++", "ESP32", "INA219 (I2C)", "SSD1306 OLED", "KiCad", "IoT Telemetry"],
-    image: "https://images.unsplash.com/photo-1651340550839-3b295d930048?crop=entropy&cs=srgb&fm=jpg&q=85",
+    image: "/projects/dc-voltage-meter.svg",
     url: "https://github.com/Buddhadeb-ss/DC-voltage-meter",
     metrics: [
       { label: "Voltage Range", value: "0 to 26 V DC" },
@@ -323,7 +323,7 @@ export const projects = [
     description:
       "A standalone real-time football scoreboard and environmental monitor. Polls live sports fixtures from REST APIs, parses payloads with zero-copy JSON parsing, fires live event alerts, and samples a Bosch BME280 for temperature, humidity, and atmospheric pressure.",
     stack: ["C++", "ESP32", "REST API", "BME280 (I2C)", "SSD1306 OLED", "JSON"],
-    image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?crop=entropy&cs=srgb&fm=jpg&q=85",
+    image: "/projects/fifa-scoreboard.svg",
     url: "https://github.com/Buddhadeb-ss/ESP32-FIFA-Live-Scoreboard",
     metrics: [
       { label: "Polling Interval", value: "15s Dynamic Refresh" },
@@ -366,7 +366,7 @@ export const projects = [
     description:
       "A biological connectome-based Drosophila melanogaster brain learning model mapped into a simulated game environment. Explores whether biological synaptic connectivity networks (216 neurons, 14,037 directed synapses) can learn adaptive control behaviors via A2C reinforcement learning.",
     stack: ["Python", "PyTorch", "Connectome Data", "Reinforcement Learning (A2C)", "Neuroscience"],
-    image: "https://images.unsplash.com/photo-1557701197-2f99da0922dd?crop=entropy&cs=srgb&fm=jpg&q=85",
+    image: "/projects/fruit-fly-learning.svg",
     url: "https://github.com/Buddhadeb-ss/fruit-fly-learning",
     metrics: [
       { label: "Biological Neurons", value: "216 Modeled Units" },
@@ -405,7 +405,7 @@ export const projects = [
     description:
       "A POSIX-compliant command line interpreter built ground-up in standard C99 without third-party frameworks. Implements an interactive REPL, command tokenization, PATH executable lookup, builtins (cd, pwd, echo, type, exit), and Unix file descriptor redirection.",
     stack: ["C (C99)", "POSIX System Calls", "fork / exec", "File Descriptors", "Systems Programming"],
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=srgb&fm=jpg&q=85",
+    image: "/projects/shell-c.svg",
     url: "https://github.com/Buddhadeb-ss/codecrafters-shell-c",
     featured: false,
     metrics: [
@@ -506,7 +506,7 @@ export const splitPanels = [
     overline: "01 — The work",
     title: "Engineering",
     line: "Circuits, firmware, and software at the silicon level.",
-    image: "https://raw.githubusercontent.com/Buddhadeb-ss/TinyCV-ESP32-CAM/main/screenshots/demo_mouse_tracking.png",
+    image: "/projects/tinycv-esp32-cam.svg",
     testid: "home-engineering-panel",
   },
   {

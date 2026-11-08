@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-pattern-2" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#262933" />
+    </pattern>
+    <radialGradient id="radar-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="#0b0c10" />
+  <rect width="800" height="500" fill="url(#grid-pattern-2)" />
+
+  <!-- Outer Blueprint Border -->
+  <rect x="24" y="24" width="752" height="452" fill="none" stroke="#232733" stroke-width="1.5" />
+  <rect x="32" y="32" width="736" height="436" fill="none" stroke="#181a24" stroke-width="1" stroke-dasharray="4 4" />
+
+  <!-- Corner Marks -->
+  <path d="M18 24 h12 M24 18 v12 M770 24 h12 M776 18 v12 M18 476 h12 M24 470 v12 M770 476 h12 M776 470 v12" stroke="#4a5061" stroke-width="1.5" />
+
+  <!-- Header Technical Silkscreen -->
+  <text x="44" y="52" font-family="'JetBrains Mono', monospace" font-size="11" fill="#717789" letter-spacing="2">MOD_02 // COUNTER_UAS_RADAR</text>
+  <text x="756" y="52" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="11" fill="#717789" letter-spacing="1">STM32F4 // 100Hz_PID</text>
+
+  <!-- Footer Technical Silkscreen -->
+  <text x="44" y="456" font-family="'JetBrains Mono', monospace" font-size="10" fill="#525866" letter-spacing="1.5">2-AXIS GIMBAL // PAN-TILT</text>
+  <text x="756" y="456" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#525866" letter-spacing="1.5">LATENCY: &lt;25MS // HIL_TESTED</text>
+
+  <!-- Center Artwork: Radar Range Scope & 2-Axis Tracking Turret -->
+  <circle cx="400" cy="245" r="145" fill="url(#radar-glow)" />
+  <circle cx="400" cy="245" r="140" fill="none" stroke="#252936" stroke-width="1" />
+  <circle cx="400" cy="245" r="105" fill="none" stroke="#2e3444" stroke-width="1.2" stroke-dasharray="2 4" />
+  <circle cx="400" cy="245" r="70" fill="none" stroke="#3d4457" stroke-width="1.5" />
+  <circle cx="400" cy="245" r="35" fill="none" stroke="#252936" stroke-width="1" />
+  <circle cx="400" cy="245" r="4" fill="#ffffff" />
+
+  <!-- Azimuth Axis Lines -->
+  <line x1="240" y1="245" x2="560" y2="245" stroke="#2f3545" stroke-width="1.2" />
+  <line x1="400" y1="85" x2="400" y2="405" stroke="#2f3545" stroke-width="1.2" />
+  <line x1="287" y1="132" x2="513" y2="358" stroke="#1d212c" stroke-width="1" stroke-dasharray="3 3" />
+  <line x1="287" y1="358" x2="513" y2="132" stroke="#1d212c" stroke-width="1" stroke-dasharray="3 3" />
+
+  <!-- Degree Headings -->
+  <text x="400" y="78" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5c6375">000°</text>
+  <text x="575" y="248" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5c6375">090°</text>
+  <text x="400" y="420" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5c6375">180°</text>
+  <text x="215" y="248" font-family="'JetBrains Mono', monospace" font-size="8" fill="#5c6375">270°</text>
+
+  <!-- Gimbal PAN/TILT Curved Vector Arrows -->
+  <path d="M330 185 A 95 95 0 0 1 470 185" fill="none" stroke="#8b95ad" stroke-width="1.8" />
+  <polygon points="470,185 464,178 462,189" fill="#8b95ad" />
+  <text x="400" y="175" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#9da6b9">AZIMUTH PAN [±180°]</text>
+
+  <!-- Tracked Drone Target Node -->
+  <g transform="translate(460, 160)">
+    <!-- Drone Quadcopter Wireframe -->
+    <line x1="-18" y1="-18" x2="18" y2="18" stroke="#ffffff" stroke-width="1.8" />
+    <line x1="-18" y1="18" x2="18" y2="-18" stroke="#ffffff" stroke-width="1.8" />
+    <circle cx="-18" cy="-18" r="5" fill="none" stroke="#e4e7ee" stroke-width="1.2" />
+    <circle cx="18" cy="-18" r="5" fill="none" stroke="#e4e7ee" stroke-width="1.2" />
+    <circle cx="-18" cy="18" r="5" fill="none" stroke="#e4e7ee" stroke-width="1.2" />
+    <circle cx="18" cy="18" r="5" fill="none" stroke="#e4e7ee" stroke-width="1.2" />
+    <circle cx="0" cy="0" r="4" fill="#ffffff" />
+    
+    <!-- Lock Reticle Crosshair -->
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#e4e7ee" stroke-width="1.5" stroke-dasharray="5 3" />
+    <line x1="-34" y1="0" x2="-22" y2="0" stroke="#ffffff" stroke-width="2" />
+    <line x1="22" y1="0" x2="34" y2="0" stroke="#ffffff" stroke-width="2" />
+    <line x1="0" y1="-34" x2="0" y2="-22" stroke="#ffffff" stroke-width="2" />
+    <line x1="0" y1="22" x2="0" y2="34" stroke="#ffffff" stroke-width="2" />
+
+    <!-- Tag -->
+    <rect x="36" y="-12" width="105" height="18" fill="#151722" stroke="#373d4d" stroke-width="1" />
+    <text x="42" y="1" font-family="'JetBrains Mono', monospace" font-size="8" fill="#ffffff" font-weight="600">TARGET: UAS_LOCK</text>
+  </g>
+
+  <!-- Left: PID Closed-Loop Architecture Block -->
+  <g transform="translate(60, 165)" font-family="'JetBrains Mono', monospace" font-size="8" fill="#717789">
+    <rect x="0" y="0" width="105" height="100" fill="#10121a" stroke="#252936" stroke-width="1.2" />
+    <text x="12" y="20" fill="#9da6b9" font-weight="600">PID REGULATOR</text>
+    <line x1="12" y1="28" x2="93" y2="28" stroke="#252936" stroke-width="1" />
+    <text x="12" y="44" fill="#5e6475">Kp: 2.45 // PROP</text>
+    <text x="12" y="60" fill="#5e6475">Ki: 0.12 // INTG</text>
+    <text x="12" y="76" fill="#5e6475">Kd: 0.08 // DERV</text>
+    <text x="12" y="92" fill="#a1a8b8">RATE: 100 HZ</text>
+  </g>
+
+  <!-- Right: Gimbal Motor Actuator Specifications -->
+  <g transform="translate(635, 175)" font-family="'JetBrains Mono', monospace" font-size="8" fill="#717789">
+    <rect x="0" y="0" width="105" height="85" fill="#10121a" stroke="#252936" stroke-width="1.2" />
+    <text x="12" y="20" fill="#9da6b9" font-weight="600">GIMBAL ACTUATOR</text>
+    <line x1="12" y1="28" x2="93" y2="28" stroke="#252936" stroke-width="1" />
+    <text x="12" y="44" fill="#5e6475">PWM: TIM2_CH1</text>
+    <text x="12" y="60" fill="#5e6475">TORQUE: 25 KG·CM</text>
+    <text x="12" y="76" fill="#a1a8b8">STEP: 0.08°</text>
+  </g>
+</svg>

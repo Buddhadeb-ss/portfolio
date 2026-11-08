@@ -57,3 +57,4 @@ export function CircuitBadge({ label = "TEST_POINT", value = "3.3V", className =
     </div>
   );
 }
+
