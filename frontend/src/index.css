@@ -72,6 +72,10 @@
   font-family: "Outfit", sans-serif;
 }
 
+.font-mono {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
 /* film grain overlay */
 .grain {
   position: fixed;
@@ -114,4 +118,42 @@
 }
 ::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* Hardware & Embedded Thematic Utilities */
+.oled-container {
+  background: #060b10;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.oled-text {
+  color: #38bdf8;
+  text-shadow: 0 0 6px rgba(56, 189, 248, 0.6);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: -0.02em;
+}
+
+.oled-grid {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+@keyframes led-blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.92); }
+}
+
+@keyframes led-flash {
+  0%, 85%, 100% { opacity: 0.2; }
+  90%, 95% { opacity: 1; filter: drop-shadow(0 0 4px currentColor); }
+}
+
+.animate-led-blink {
+  animation: led-blink 1.4s ease-in-out infinite;
+}
+
+.animate-led-flash {
+  animation: led-flash 2.5s ease-in-out infinite;
 }

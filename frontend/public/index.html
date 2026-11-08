@@ -4,22 +4,125 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FAFAFA" />
+    
+    <!-- Primary SEO -->
+    <title>Buddhadeb Banik — Embedded Systems & Photography</title>
     <meta
       name="description"
-      content="Buddhadeb Banik — aspiring embedded systems engineer and photographer. Circuits, firmware, and low-level software; street and landscape photography."
+      content="Buddhadeb Banik — Embedded Systems Engineer & Photographer based in Bengaluru. Designing bare-metal firmware, custom KiCad PCBs, TinyML edge vision on ESP32/STM32, and low-level systems programming in C."
     />
+    <meta
+      name="keywords"
+      content="Buddhadeb Banik, Embedded Systems Engineer, Firmware Engineer, STM32, ESP32, KiCad, PCB Design, TinyML, Edge AI, Bare-metal C, POSIX, FreeRTOS, Hardware-in-the-Loop, Electronics, Photography"
+    />
+    <meta name="author" content="Buddhadeb Banik" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Buddhadeb Banik — Embedded Systems & Photography" />
+    <meta
+      property="og:description"
+      content="Building hardware at the edge. Capturing the world in between. Circuits, firmware, KiCad PCBs, and TinyML."
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/portrait.webp" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Buddhadeb Banik — Embedded Systems & Photography" />
+    <meta
+      name="twitter:description"
+      content="Building hardware at the edge. Capturing the world in between. Circuits, firmware, KiCad PCBs, and TinyML."
+    />
+    <meta name="twitter:image" content="%PUBLIC_URL%/portrait.webp" />
+
+    <!-- Machine & LLM Readability -->
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM and Parser Summary" />
+
     <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <title>Buddhadeb Banik — Embedded Systems & Photography</title>
+
+    <!-- Schema.org JSON-LD for AI Parsers & Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://github.com/Buddhadeb-ss#person",
+          "name": "Buddhadeb Banik",
+          "jobTitle": "Embedded Systems Engineer",
+          "description": "Embedded systems engineer working at the intersection of silicon and software: bare-metal microcontroller firmware (STM32, ESP32), custom PCB design in KiCad, TinyML edge computer vision, and POSIX systems programming in C.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bengaluru",
+            "addressCountry": "India"
+          },
+          "knowsAbout": [
+            "Embedded C",
+            "C++",
+            "STM32 Microcontrollers",
+            "ESP32 & ESP32-S3",
+            "Bare-metal Firmware",
+            "FreeRTOS",
+            "KiCad PCB Layout",
+            "TinyML & INT8 Quantization",
+            "I2C / SPI / UART / CAN / PWM Bus Protocols",
+            "Hardware-in-the-Loop (HIL) Testing",
+            "POSIX Systems Programming",
+            "Street & Landscape Photography"
+          ],
+          "sameAs": [
+            "https://github.com/Buddhadeb-ss",
+            "https://www.linkedin.com/in/buddhadeb-banik/",
+            "https://www.youtube.com/@BBbuilds-ECE",
+            "https://www.instagram.com/arc.buddha/"
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "name": "Featured Engineering Projects",
+          "itemListElement": [
+            {
+              "@type": "SoftwareSourceCode",
+              "name": "TinyCV-ESP32-CAM",
+              "programmingLanguage": ["C++", "Python", "TensorFlow Lite Micro"],
+              "codeRepository": "https://github.com/Buddhadeb-ss/TinyCV-ESP32-CAM",
+              "description": "On-device edge computer vision running a custom 14.8 KB INT8 quantized neural core (DeskObjectNet) in 141ms on a 240MHz Xtensa LX6 with zero background false positives."
+            },
+            {
+              "@type": "SoftwareSourceCode",
+              "name": "Anti-Drone Defense System (SIH-26)",
+              "programmingLanguage": ["Embedded C", "Python", "Assembly"],
+              "codeRepository": "https://github.com/Buddhadeb-ss/SIH-26-Anti-Drone-System",
+              "description": "Counter-UAS defense architecture with 100 Hz closed-loop PID dual-axis motorized gimbal actuation, radar tracking, and Hardware-in-the-Loop simulation."
+            },
+            {
+              "@type": "SoftwareSourceCode",
+              "name": "Handheld Game Console PCB",
+              "programmingLanguage": ["C++", "KiCad EDA"],
+              "codeRepository": "https://github.com/Buddhadeb-ss/Game-Development-board",
+              "description": "Custom 2-layer PCB designed in KiCad for an open-hardware handheld console powered by Arduino Nano ESP32 and 0.96 inch I2C OLED."
+            },
+            {
+              "@type": "SoftwareSourceCode",
+              "name": "DC Voltage & Power Instrumentation",
+              "programmingLanguage": ["C++", "KiCad EDA"],
+              "codeRepository": "https://github.com/Buddhadeb-ss/DC-voltage-meter",
+              "description": "IoT precision DC power monitor measuring voltage, current, power, and energy in real-time with INA219 high-side shunt and Wi-Fi cloud telemetry."
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
 </html>
-

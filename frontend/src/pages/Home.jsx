@@ -1,11 +1,14 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Cpu, Radio, Sparkles } from "lucide-react";
 import Marquee from "../components/Marquee";
 import Footer from "../components/Footer";
 import { Reveal, MaskedLines, EASE } from "../components/Reveal";
-import { profile, projects, photos, splitPanels, drive } from "../data/portfolio";
+import OledDisplay from "../components/hardware/OledDisplay";
+import StatusLed from "../components/hardware/StatusLed";
+import { PcbTraceLine, CircuitBadge } from "../components/hardware/PcbTraceBus";
+import { profile, projects, photos, splitPanels } from "../data/portfolio";
 
 function Hero() {
   const ref = useRef(null);
@@ -15,8 +18,16 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative flex min-h-[94svh] flex-col justify-center overflow-hidden" data-testid="home-hero">
-      <motion.div style={{ y: yMark }} className="absolute right-12 top-1/2 hidden -translate-y-1/2 xl:block">
+    <section
+      ref={ref}
+      className="relative flex min-h-[94svh] flex-col justify-center overflow-hidden pt-12 md:pt-16"
+      data-testid="home-hero"
+    >
+      {/* Right Column: Hero Portrait + Interactive Virtual OLED Telemetry */}
+      <motion.div
+        style={{ y: yMark }}
+        className="absolute right-8 top-1/2 hidden -translate-y-1/2 xl:flex flex-col items-end gap-6 z-20"
+      >
         <motion.div
           data-testid="hero-portrait"
           initial={{ opacity: 0, scale: 0.95, rotate: 2 }}
@@ -27,21 +38,39 @@ function Hero() {
           <img
             src="/portrait.webp"
             alt="Buddhadeb Banik"
-            className="h-[400px] w-[280px] rounded-md border border-border/70 object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+            className="h-[360px] w-[260px] rounded-md border border-border/70 object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
           />
           <div className="pointer-events-none absolute inset-0 rounded-md ring-1 ring-inset ring-black/5" />
+        </motion.div>
+
+        {/* Live OLED Telemetry Display Unit */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 1.4, ease: EASE }}
+        >
+          <OledDisplay />
         </motion.div>
       </motion.div>
 
       <motion.div style={{ y: yCopy, opacity }} className="mx-auto w-full max-w-6xl px-6 pt-24 md:px-10">
-        <motion.p
+        {/* Hardware Status & Silkscreen Header */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.05 }}
-          className="mb-8 text-xs uppercase tracking-[0.25em] text-muted-foreground"
+          className="mb-8 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.25em] text-muted-foreground"
         >
-          {profile.name} — {profile.location}
-        </motion.p>
+          <div className="flex items-center gap-2">
+            <StatusLed color="green" label="PWR" state="on" size="xs" />
+            <StatusLed color="amber" label="TX" state="flash" size="xs" />
+            <StatusLed color="blue" label="RX" state="blink" size="xs" />
+          </div>
+          <span className="text-border">|</span>
+          <span>{profile.name} — {profile.location}</span>
+          <span className="hidden sm:inline text-border">|</span>
+          <CircuitBadge label="CLK" value="240MHz" className="hidden sm:inline-flex" />
+        </motion.div>
 
         <h1 className="font-display text-[clamp(2.9rem,9.5vw,7.25rem)] font-light leading-[0.98] tracking-tighter">
           <MaskedLines lines={profile.headline} />
@@ -51,29 +80,51 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
-          className="mt-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between xl:pr-[360px]"
+          className="mt-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between xl:pr-[380px]"
         >
-          <p className="max-w-md text-base font-light leading-relaxed text-muted-foreground md:text-lg">
-            {profile.tagline}
-          </p>
+          <div className="space-y-4 max-w-md">
+            <p className="text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+              {profile.tagline}
+            </p>
+            <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] text-muted-foreground">
+              <span className="rounded border border-border/70 bg-secondary/40 px-2 py-0.5">
+                Bare-Metal C
+              </span>
+              <span className="rounded border border-border/70 bg-secondary/40 px-2 py-0.5">
+                KiCad PCB
+              </span>
+              <span className="rounded border border-border/70 bg-secondary/40 px-2 py-0.5">
+                TinyML INT8
+              </span>
+              <span className="rounded border border-border/70 bg-secondary/40 px-2 py-0.5">
+                HIL Testing
+              </span>
+            </div>
+          </div>
+
           <div className="flex items-center gap-3">
             <Link
               to="/work"
               data-testid="hero-cta-work"
-              className="whitespace-nowrap rounded-full bg-foreground px-6 py-3 text-sm text-background transition-transform duration-300 hover:-translate-y-0.5"
+              className="whitespace-nowrap rounded-full bg-foreground px-6 py-3 text-sm text-background transition-transform duration-300 hover:-translate-y-0.5 font-medium shadow-sm"
             >
               View the work
             </Link>
             <Link
               to="/photography"
               data-testid="hero-cta-photography"
-              className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border px-6 py-3 text-sm transition-colors duration-300 hover:border-foreground/50"
+              className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border px-6 py-3 text-sm transition-colors duration-300 hover:border-foreground/50 font-medium"
             >
               Photography
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </div>
         </motion.div>
+
+        {/* Mobile/Tablet OLED view */}
+        <div className="mt-10 xl:hidden">
+          <OledDisplay />
+        </div>
       </motion.div>
 
       <motion.div
@@ -85,7 +136,7 @@ function Hero() {
         <motion.span animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}>
           <ArrowDown className="h-3.5 w-3.5" />
         </motion.span>
-        <span className="text-[11px] uppercase tracking-[0.25em]">Scroll</span>
+        <span className="text-[11px] font-mono uppercase tracking-[0.25em]">Scroll to Probe</span>
       </motion.div>
     </section>
   );
@@ -95,7 +146,12 @@ function SplitSection() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32" data-testid="home-split-section">
       <Reveal>
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Two disciplines</p>
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          <p className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground">
+            Two disciplines
+          </p>
+        </div>
         <h2 className="mt-4 max-w-2xl font-display text-3xl font-light tracking-tight sm:text-4xl lg:text-5xl">
           One pair of eyes, two ways of seeing.
         </h2>
@@ -107,7 +163,7 @@ function SplitSection() {
             <Link
               to={p.to}
               data-testid={p.testid}
-              className="group relative block h-[58vh] overflow-hidden rounded-md md:h-[68vh]"
+              className="group relative block h-[58vh] overflow-hidden rounded-md md:h-[68vh] border border-border/50"
             >
               <img
                 src={p.image}
@@ -115,9 +171,9 @@ function SplitSection() {
                 referrerPolicy="no-referrer"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
-                <p className="text-[11px] uppercase tracking-[0.25em] text-white/70">{p.overline}</p>
+                <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-white/70">{p.overline}</p>
                 <div className="mt-3 flex items-center justify-between">
                   <h3 className="font-display text-3xl font-light tracking-tight text-white md:text-4xl">{p.title}</h3>
                   <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/40 text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
@@ -142,18 +198,41 @@ function ProjectCard({ p, index }) {
         data-testid={`home-project-card-${p.id}`}
         className="group block"
       >
-        <div className="overflow-hidden rounded-md">
+        <div className="relative overflow-hidden rounded-md border border-border/60">
           <img
             src={p.image}
             alt={p.title}
             loading="lazy"
             className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
+          {p.demoGif && (
+            <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/75 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-emerald-400 border border-emerald-500/30">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Live Demo
+            </span>
+          )}
         </div>
+
         <div className="mt-5 flex items-start justify-between gap-4">
           <div>
-            <h3 className="font-display text-xl font-medium tracking-tight">{p.title}</h3>
+            <h3 className="font-display text-xl font-medium tracking-tight group-hover:text-foreground">
+              {p.title}
+            </h3>
             <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
+
+            {/* Metrics Chips Preview */}
+            {p.metrics && p.metrics.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {p.metrics.slice(0, 2).map((m, mi) => (
+                  <span
+                    key={mi}
+                    className="rounded border border-border/70 bg-muted/30 px-2 py-0.5 text-[10px] font-mono text-muted-foreground"
+                  >
+                    <span className="text-foreground/90 font-medium">{m.value}</span>
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
           <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-foreground" />
         </div>
@@ -167,9 +246,13 @@ function FeaturedWork() {
   return (
     <section className="border-t border-border/60" data-testid="home-featured-work">
       <div className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
+        <PcbTraceLine testPoint="BUS_01: FEATURED_PROJECTS" className="mb-10" />
+
         <Reveal className="flex items-end justify-between gap-6">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Selected work</p>
+            <p className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground">
+              Selected work
+            </p>
             <h2 className="mt-4 font-display text-3xl font-light tracking-tight sm:text-4xl lg:text-5xl">
               Built from silicon up.
             </h2>
@@ -177,7 +260,7 @@ function FeaturedWork() {
           <Link
             to="/work"
             data-testid="home-all-projects-link"
-            className="group hidden items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground md:inline-flex"
+            className="group hidden items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground md:inline-flex font-mono"
           >
             All projects
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -193,7 +276,7 @@ function FeaturedWork() {
         <Link
           to="/work"
           data-testid="home-all-projects-link-mobile"
-          className="mt-10 inline-flex items-center gap-2 text-sm text-muted-foreground md:hidden"
+          className="mt-10 inline-flex items-center gap-2 text-sm text-muted-foreground md:hidden font-mono"
         >
           All projects <ArrowUpRight className="h-4 w-4" />
         </Link>
@@ -207,9 +290,13 @@ function PhotoStrip() {
   return (
     <section className="border-t border-border/60" data-testid="home-photo-strip">
       <div className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
+        <PcbTraceLine testPoint="BUS_02: PHOTOMETRIC_FRAMES" className="mb-10" />
+
         <Reveal className="flex items-end justify-between gap-6">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">The other half</p>
+            <p className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground">
+              The other half
+            </p>
             <h2 className="mt-4 font-display text-3xl font-light tracking-tight sm:text-4xl lg:text-5xl">
               Chasing light, not clock speed.
             </h2>
@@ -217,7 +304,7 @@ function PhotoStrip() {
           <Link
             to="/photography"
             data-testid="home-gallery-link"
-            className="group hidden items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground md:inline-flex"
+            className="group hidden items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground md:inline-flex font-mono"
           >
             Full gallery
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -228,7 +315,7 @@ function PhotoStrip() {
           {strip.map((ph, i) => (
             <Reveal key={ph.id} delay={i * 0.08} className="shrink-0">
               <Link to="/photography" data-testid={`home-photo-strip-item-${i + 1}`} className="group block">
-                <div className="h-64 w-52 overflow-hidden rounded-md md:h-80 md:w-64">
+                <div className="h-64 w-52 overflow-hidden rounded-md md:h-80 md:w-64 border border-border/50">
                   <img
                     src={ph.thumb}
                     alt={`Photograph ${ph.index}`}
@@ -237,8 +324,8 @@ function PhotoStrip() {
                     className="h-full w-full object-cover transition-all duration-700 group-hover:scale-[1.04] group-hover:opacity-90"
                   />
                 </div>
-                <p className="mt-2 text-[11px] tracking-[0.2em] text-muted-foreground">
-                  {String(ph.index).padStart(2, "0")}
+                <p className="mt-2 text-[11px] font-mono tracking-[0.2em] text-muted-foreground">
+                  FRAME #{String(ph.index).padStart(2, "0")}
                 </p>
               </Link>
             </Reveal>
@@ -248,7 +335,7 @@ function PhotoStrip() {
         <Link
           to="/photography"
           data-testid="home-gallery-link-mobile"
-          className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground md:hidden"
+          className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground md:hidden font-mono"
         >
           Full gallery <ArrowUpRight className="h-4 w-4" />
         </Link>

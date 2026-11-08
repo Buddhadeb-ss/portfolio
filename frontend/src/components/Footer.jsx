@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Terminal } from "lucide-react";
 import { Reveal, EASE } from "./Reveal";
 import { profile } from "../data/portfolio";
 
@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="border-t border-border/60" data-testid="site-footer">
       <div className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Get in touch</p>
+          <p className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground">Get in touch</p>
           <a
             data-testid="footer-cta-link"
             href="https://www.linkedin.com/in/buddhadeb-banik/"
@@ -31,7 +31,7 @@ export default function Footer() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border/60 pt-10 md:grid-cols-4">
+          <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border/60 pt-10 md:grid-cols-4 font-mono">
             {profile.links.map((l) => (
               <a
                 key={l.label}
@@ -42,8 +42,8 @@ export default function Footer() {
                 className="group flex items-center justify-between py-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
               >
                 <span className="flex flex-col">
-                  <span className="text-foreground">{l.label}</span>
-                  <span className="text-xs text-muted-foreground">{l.handle}</span>
+                  <span className="text-foreground font-sans font-medium">{l.label}</span>
+                  <span className="text-xs text-muted-foreground font-mono">{l.handle}</span>
                 </span>
                 <ArrowUpRight className="h-4 w-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </a>
@@ -51,9 +51,31 @@ export default function Footer() {
           </div>
         </Reveal>
 
-        <div className="mt-14 flex flex-col gap-2 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <span>© {new Date().getFullYear()} {profile.name}</span>
-          <span>Bengaluru, India — engineering by day, light by instinct</span>
+        {/* Machine & Parser Diagnostics row */}
+        <div className="mt-14 pt-6 border-t border-border/40 flex flex-col gap-3 font-mono text-xs text-muted-foreground/80 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-3">
+            <span>© {new Date().getFullYear()} {profile.name}</span>
+            <span>·</span>
+            <span className="text-emerald-500/90 flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              BOARD: REV 2.6.4
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <a
+              href="/llms.txt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-foreground transition-colors underline decoration-border underline-offset-4"
+              title="Machine-readable markdown summary for AI models and parsers"
+            >
+              <Terminal className="h-3 w-3" />
+              /llms.txt (AI & LLM Briefing)
+            </a>
+            <span className="hidden md:inline">·</span>
+            <span className="hidden md:inline">Bengaluru, India</span>
+          </div>
         </div>
       </div>
     </footer>

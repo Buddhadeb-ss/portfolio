@@ -3,13 +3,15 @@ module.exports = {
   darkMode: ["class"],
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./public/index.html"
+    "./public/index.html",
+    "./index.html"
   ],
   theme: {
     extend: {
       fontFamily: {
         display: ["Outfit", "sans-serif"],
         body: ["Manrope", "sans-serif"],
+        mono: ["'JetBrains Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -45,6 +47,16 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        copper: {
+          DEFAULT: "#c67d58",
+          dark: "#8c4d2d",
+          light: "#e29c78",
+        },
+        oled: {
+          cyan: "#38bdf8",
+          amber: "#f59e0b",
+          green: "#22c55e",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -55,4 +67,3 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 };
-

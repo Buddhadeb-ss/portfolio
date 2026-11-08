@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import Logo from "./Logo";
+import StatusLed from "./hardware/StatusLed";
 
 const links = [
   { to: "/work", label: "Work" },
@@ -50,7 +51,7 @@ export default function Nav() {
         <Link
           to="/"
           data-testid="nav-logo-link"
-          className="group flex items-center gap-2.5 text-foreground"
+          className="group flex items-center gap-3 text-foreground"
           onClick={(e) => {
             if (pathname === "/") {
               e.preventDefault();
@@ -59,7 +60,13 @@ export default function Nav() {
           }}
         >
           <Logo className="h-[22px] w-[22px] transition-transform duration-500 group-hover:rotate-[8deg]" />
-          <span className="hidden font-display text-[15px] font-medium tracking-tight sm:inline">Buddhadeb Banik</span>
+          <div className="flex items-center gap-2">
+            <span className="font-display text-[15px] font-medium tracking-tight">Buddhadeb Banik</span>
+            <div className="hidden items-center gap-1.5 md:flex pl-1">
+              <span className="h-1 w-1 rounded-full bg-border" />
+              <StatusLed color="green" label="ONLINE" size="xs" />
+            </div>
+          </div>
         </Link>
 
         <nav className="flex items-center gap-5 md:gap-8">

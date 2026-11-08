@@ -1,0 +1,91 @@
+# Buddhadeb Banik — Candidate Profile & Technical Dossier
+
+> **Role**: Embedded Systems Engineer & Systems Programmer  
+> **Location**: Bengaluru, Karnataka, India  
+> **Contact**: [LinkedIn](https://www.linkedin.com/in/buddhadeb-banik/) · [GitHub](https://github.com/Buddhadeb-ss) · [YouTube](https://www.youtube.com/@BBbuilds-ECE) · [Instagram](https://www.instagram.com/arc.buddha/)  
+> **CV/Resume**: https://github.com/Buddhadeb-ss/portfolio/raw/main/frontend/public/resume.pdf  
+
+---
+
+## Executive Summary
+Buddhadeb Banik is an Embedded Systems Engineer working across bare-metal firmware, low-level POSIX C systems programming, custom PCB schematic & layout design in KiCad, and on-device TinyML edge computer vision. He specializes in register-level peripheral control, multi-sensor hardware integration (I2C, SPI, UART, CAN, PWM), and Hardware-in-the-Loop (HIL) validation.
+
+---
+
+## Core Technical Competencies
+
+- **Languages**: Embedded C (C99/C11), C++ (C++14/C++17), Python, Assembly, POSIX Shell
+- **Architectures & Silicon**: STM32 (ARM Cortex-M4), ESP32 / ESP32-S3 (Xtensa 32-bit LX6/LX7), Arduino Nano ESP32
+- **Hardware & PCB Design**: KiCad EDA (Schematic capture, PCB layout, ground plane routing, decoupling, DRC, Gerber CAM exports)
+- **Protocols & Buses**: I2C (400kHz Fast-Mode), SPI, UART (up to 460.8k baud), CAN bus, PWM, SCCB
+- **Edge AI & TinyML**: TensorFlow Lite Micro (TFLM), INT8 Quantization, ESP-NN kernels, sensor-matched training
+- **Lab & Instrumentation**: Saleae Logic Analyzer, Digital Storage Oscilloscope, Bench Multimeter, Regulated DC Power Supplies
+- **Operating Systems & Environments**: FreeRTOS, Linux/POSIX syscalls, PlatformIO, STM32CubeIDE, GCC/Clang, Make, Git, Valgrind, GDB
+
+---
+
+## Key Verified Engineering Projects
+
+### 1. TinyCV-ESP32-CAM: Real-Time Edge AI on Microcontrollers
+- **Repository**: https://github.com/Buddhadeb-ss/TinyCV-ESP32-CAM
+- **Stack**: C++, TensorFlow Lite Micro, ESP32 (240MHz Xtensa LX6), OV3660 Camera, Python
+- **Key Metrics**:
+  - **Inference Latency**: 141 ms on 240 MHz microcontroller (7.1 FPS)
+  - **Model Size**: 14.8 KB INT8 quantized neural core (`DeskObjectNet`)
+  - **Sensor Resolution**: 240×240 RGB565 high-resolution streaming (6.25x sharper than 96x96 legacy)
+  - **Reliability**: 0 bytes memory leak over multi-hour runs; 0.0% background false positives
+- **Architecture**: Bimodal fast-path architecture triggering 140ms deep semantic inference only on motion, with binary framed JPEG serial streaming at 460,800 baud and predictive color-spatial bounding box tracking.
+
+### 2. Anti-Drone Defense System (SIH-26)
+- **Repository**: https://github.com/Buddhadeb-ss/SIH-26-Anti-Drone-System
+- **Stack**: Embedded C, STM32 (ARM Cortex-M4), PID Control, Python, Radar/CV Fusion, HIL Simulation
+- **Key Metrics**:
+  - **Control Loop**: 100 Hz closed-loop PID gimbal steering
+  - **Reaction Latency**: <25 ms radar-to-actuator reaction time
+  - **Mechanical Degree**: 2-axis motorized PAN / TILT actuation
+- **Architecture**: Multi-sensor fusion combining radar distance sensing with camera vision. A closed-loop PID routine drives high-torque servo motors via timer PWM, verified using Hardware-in-the-Loop (HIL) testing against dynamic flight trajectories.
+
+### 3. Handheld Game Console PCB
+- **Repository**: https://github.com/Buddhadeb-ss/Game-Development-board
+- **Stack**: KiCad EDA, PCB Layout, Arduino Nano ESP32, Gerber CAM, Hardware Design
+- **Key Metrics**:
+  - **PCB Layout**: Double-sided 1.6mm FR-4 with continuous ground pour and 10-mil trace clearances
+  - **Bus Interface**: 400 kHz Fast-Mode I2C bus driving 0.96" SSD1306 OLED
+  - **Input**: 5-button tactile matrix with hardware debouncing
+- **Architecture**: Open-hardware handheld gaming platform with socketed Arduino Nano ESP32, ceramic decoupling arrays, and ESD-filtered USB-C power rails.
+
+### 4. DC Voltage & Power Instrumentation
+- **Repository**: https://github.com/Buddhadeb-ss/DC-voltage-meter
+- **Stack**: C++, ESP32, INA219 (I2C), SSD1306 OLED, KiCad
+- **Key Metrics**:
+  - **Measurement Range**: 0 to 26 V DC, ±3.2 A High-Side Current
+  - **Resolution**: 0.8 mA current resolution, 4 mV voltage resolution
+  - **Telemetry**: 10 Hz continuous Wi-Fi cloud data streaming to Blynk
+- **Architecture**: IoT precision power characterization device calculating instantaneous power and cumulative watt-hours without ground-loop distortion.
+
+### 5. ESP32 Live Scoreboard & Workstation Monitor
+- **Repository**: https://github.com/Buddhadeb-ss/ESP32-FIFA-Live-Scoreboard
+- **Stack**: C++, ESP32, BME280 (I2C), SSD1306 OLED, REST API, JSON
+- **Key Metrics**:
+  - **Environmental Precision**: ±0.5°C temperature, ±3% relative humidity
+  - **Buffer Size**: <1 KB memory footprint with zero-copy JSON parsing
+  - **Refresh Rate**: 15s dynamic polling interval
+
+### 6. Fruit Fly Connectome Neural Model
+- **Repository**: https://github.com/Buddhadeb-ss/fruit-fly-learning
+- **Stack**: Python, PyTorch, Biological Connectome Data, Reinforcement Learning (A2C)
+- **Key Metrics**:
+  - **Scale**: 216 biological neurons and 14,037 electron-microscopy confirmed synapses
+  - **Inference**: <5 ms step latency
+
+### 7. POSIX Shell in Pure C
+- **Repository**: https://github.com/Buddhadeb-ss/codecrafters-shell-c
+- **Stack**: Strict C99, POSIX System Calls (`fork`, `execvp`, `dup2`), Valgrind Clean
+- **Key Metrics**:
+  - **Dependencies**: 0 external libraries (pure libc)
+  - **Features**: Interactive REPL, command tokenization, PATH binary scanning, builtins (cd, pwd, echo, type, exit), file descriptor redirection
+
+---
+
+## Photography Discipline
+Parallel to embedded engineering, Buddhadeb is an active street and landscape photographer based in Bengaluru (27 curated portfolio frames on Instagram @arc.buddha). Core philosophy: *"Silicon in the day, light after dark — two disciplines, one pair of eyes."*
